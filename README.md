@@ -4,6 +4,20 @@ ioc-container
 A prototype based solution to perform Dependency Injection concepts in javascript.
 This one goes out for all singleton denier.
 
+## grunt tasks
+
+~~~bash
+# api docs
+grunt jsdoc
+~~~
+
+~~~bash
+# code coverage
+grunt coverage-report
+~~~
+
+## idea
+
 It takes the prototype of a class - `origin` - and can create multiple prototypes with
 modifications - `reflections` - of it. The reflections are controlled by a `scope`
 identifier and became applied to a class. When instantiating a class and calling a

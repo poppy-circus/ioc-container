@@ -4,6 +4,70 @@ ioc-container
 A prototype based solution to perform Dependency Injection concepts in javascript.
 This one goes out for all singleton denier.
 
+## grunt tasks
+
+~~~bash
+# api docs
+grunt jsdoc
+~~~
+
+~~~bash
+# code coverage
+grunt coverage-report
+~~~
+
+## use cases
+
+### jasmine
+
+When I want to test an instance behaviour that delegates to another class instance.
+
+~~~js
+
+// -- class setup
+
+/*
+ * var MyClass = function(){ this._transitiveDep = new OtherClass(); };
+ * MyClass.prototype.command = function(value) {
+ *   this._transitiveDep.delegate(value);
+ * });
+ */
+
+// -- test scope
+
+var instance, ioc, spy;
+
+beforeEach(function() {
+  spy = jasmine.createSpy('delegate-call');
+  
+  ioc = new IoCContainer()
+    .inject(OtherClass, {
+      delegate: spy
+    })
+    .synthesize();
+    
+  instance = new MyClass();
+});
+
+afterEach(function() {
+  ioc.dispose();
+});
+
+it('calls OtherClass.delegate on MyClass.command', function() {
+  instance.command('foo');
+  expect(spy).toHaveBeenCalledWith('foo');
+});
+
+### AB Tests
+
+An easy way to implement differnt behaviour in an applicationr runtime.
+The scope property allows you to apply multiple reflections of the same class.
+Simply use `switchScope` before injection, see docs.
+
+~~~
+
+## idea
+
 It takes the prototype of a class - `origin` - and can create multiple prototypes with
 modifications - `reflections` - of it. The reflections are controlled by a `scope`
 identifier and became applied to a class. When instantiating a class and calling a

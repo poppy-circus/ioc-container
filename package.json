@@ -1,0 +1,35 @@
+{
+  "name": "ioc-container",
+  "version": "1.0.0",
+  "description": "A dependency injection tool which allows to manipulate the behavior of class prototypes or literal methods by creating reflections of an Object origin. This one goes out for all singleton denier.",
+  "author": "Tobias Busse",
+
+  "scripts": {
+    "test": "istanbul test --hook-run-in-context jasmine-node -- --requireJsSetup test/jasmine_node_setup.js test --forceexit"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:poppy-circus/ioc-container.git"
+  },
+
+  "keywords": [
+    "dependency injection",
+    "ioc container",
+    "design pattern",
+    "javascript"
+  ],
+
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.4.1",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-requirejs": "~0.4.0",
+    "grunt-jasmine-node": "~0.1.0",
+    "grunt-jsdoc": "0.4.2",
+    "istanbul": "~0.1.34",
+    "jasmine-node": "~1.14.0",
+    "requirejs": "~2.1.5"
+  }
+}

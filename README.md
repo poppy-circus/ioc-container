@@ -58,6 +58,12 @@ it('calls OtherClass.delegate on MyClass.command', function() {
   expect(spy).toHaveBeenCalledWith('foo');
 });
 
+### AB Tests
+
+An easy way to implement differnt behaviour in an applicationr runtime.
+The scope property allows you to apply multiple reflections of the same class.
+Simply use `switchScope` before injection, see docs.
+
 ~~~
 
 ## idea

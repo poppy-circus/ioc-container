@@ -68,7 +68,7 @@ define(function() {
    *
    * @constructor IoCContainer
    *
-   * @version 1.0.2
+   * @version 1.0.0
    * @author Tobias Busse
    * @copyright Tobias Busse @2014
    */

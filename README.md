@@ -16,6 +16,50 @@ grunt jsdoc
 grunt coverage-report
 ~~~
 
+## use cases
+
+### jasmine
+
+When I want to test an instance behaviour that delegates to another class instance.
+
+~~~js
+
+// -- class setup
+
+/*
+ * var MyClass = function(){ this._transitiveDep = new OtherClass(); };
+ * MyClass.prototype.command = function(value) {
+ *   this._transitiveDep.delegate(value);
+ * });
+ */
+
+// -- test scope
+
+var instance, ioc, spy;
+
+beforeEach(function() {
+  spy = jasmine.createSpy('delegate-call');
+  
+  ioc = new IoCContainer()
+    .inject(OtherClass, {
+      delegate: spy
+    })
+    .synthesize();
+    
+  instance = new MyClass();
+});
+
+afterEach(function() {
+  ioc.dispose();
+});
+
+it('calls OtherClass.delegate on MyClass.command', function() {
+  instance.command('foo');
+  expect(spy).toHaveBeenCalledWith('foo');
+});
+
+~~~
+
 ## idea
 
 It takes the prototype of a class - `origin` - and can create multiple prototypes with
